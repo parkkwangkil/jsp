@@ -1,0 +1,74 @@
+package vo;
+
+import java.util.List;
+
+public class ArticePageVO {
+	private List<ArticleVO> articleList;
+	private int startPage; 
+	private int endPage; 
+	private int currentPage; 
+	private int totalPage;
+
+	public void setArticleList(List<ArticleVO> articleList) {
+		this.articleList = articleList;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	public List<ArticleVO> getArticleList() {
+		return articleList;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public ArticePageVO(List<ArticleVO> articleList, int startPage, int endPage, int currentPage, int totalPage) {
+		super();
+		this.articleList = articleList;
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.currentPage = currentPage;
+		this.totalPage = totalPage;
+	}
+
+	public ArticePageVO(int startPage, int endPage, int currentPage, int totalPage) {
+		super();
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.currentPage = currentPage;
+		this.totalPage = totalPage;
+	}
+
+	public ArticePageVO(List<ArticleVO> articleList) {
+		super();
+		this.articleList = articleList;
+	}
+
+}

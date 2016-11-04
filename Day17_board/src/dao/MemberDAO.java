@@ -16,13 +16,13 @@ public class MemberDAO {
 
 	}
 
-	public int intsert(MemberVO member) {
+	public int insert(MemberVO member) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
 
 		try {
-			con = DBUtil.makeConnetction();
+			con = DBUtil.makeConnection();
 			String sql = "INSERT INTO MEMBER(ID,PASSWORD,NAME,EMAIL) VALUES(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
@@ -48,7 +48,7 @@ public class MemberDAO {
 		ResultSet rs = null;
 		MemberVO result = null;
 		try {
-			con = DBUtil.makeConnetction();
+			con = DBUtil.makeConnection();
 			String sql = "SELECT ID,PASSWORD,NAME,EMAIL FROM MEMBER WHERE ID=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -72,3 +72,5 @@ public class MemberDAO {
 
 	}
 }
+
+	

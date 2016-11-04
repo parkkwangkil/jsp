@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    pageEncoding="EUC-KR"%>
 <html>
 <head>
-<title>Insert title here</title>
+<title>logout.jsp</title>
 </head>
 <body>
 <script type="text/javascript">
-	alert("로그아웃");
-	location.href="/Day17_board/";
+	alert("로그아웃 되었습니다~");
+	location.href="/Day17/";
 </script>
+
 </body>
 </html>

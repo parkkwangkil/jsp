@@ -9,6 +9,14 @@ import controller.action.BoardUpdateFormAction;
 import controller.action.BoardViewAction;
 import controller.action.BoardWriteAction;
 import controller.action.BoardWriteFormAction;
+import controller.action.JoinAction;
+import controller.action.JoinFailAction;
+import controller.action.JoinSuccessAction;
+import controller.action.LogOutAction;
+import controller.action.LoginAction;
+import controller.action.LoginFalseAction;
+import controller.action.LoginFormAction;
+import controller.action.LoginSuccessAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -45,6 +53,22 @@ public class ActionFactory {
 			action = new BoardDeleteAction();
 		}else if(command.equals("board_popular")){
 			action = new BoardPopularAction();
+		}else if(command.equals("logIn")){
+			action = new LoginAction();
+		}else if(command.equals("login_form")){
+			action = new LoginFormAction();
+		}else if(command.equals("logOut")){
+			action = new LogOutAction();
+		}else if(command.equals("logInSuccess")){
+			action = new LoginSuccessAction();
+		}else if(command.equals("loginFalse")){
+			action = new LoginFalseAction();
+		}else if(command.equals("join")){
+			action = new JoinAction();
+		}else if(command.equals("joinSuccess")){
+			action = new JoinSuccessAction();
+		}else if(command.equals("joinFall")){
+			action = new JoinFailAction();
 		}
 		return action;
 	}

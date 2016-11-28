@@ -100,15 +100,76 @@ public class BoardDao {
 
 	}
 
+	public List<BoardVO> selectPopularCount() {
+		List<BoardVO> list = new ArrayList<BoardVO>();
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBUtil.makeConnection();
+			String sql = "select * from cattube_board order by readCount desc;";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery(sql);
+
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setReadCount(rs.getInt("readCount"));
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			System.out.println("rcount select error");
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(pstmt);
+			DBUtil.close(rs);
+
+		}
+		return list;
+
+	}
+
+	public BoardVO selectPopularNum(String num, String readCount) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardVO board = null;
+
+		try {
+			con = DBUtil.makeConnection();
+			String sql = "select * from board order by readCount desc;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.setString(2, readCount);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				board = new BoardVO();
+				board.setReadCount(rs.getInt("readCount"));
+			}
+		} catch (SQLException e) {
+			System.out.println("readCount select error");
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(pstmt);
+			DBUtil.close(rs);
+
+		}
+		return board;
+
+	}
+
 	public BoardVO selectOneBoardByNum(String num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		BoardVO board = null;
 
-		con = DBUtil.makeConnection();
-		String sql = "select * from cattube_board where num=?";
 		try {
+			con = DBUtil.makeConnection();
+			String sql = "select * from cattube_board where num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, num);
 			rs = pstmt.executeQuery();
@@ -152,17 +213,17 @@ public class BoardDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			DBUtil.close(con);
 			DBUtil.close(pstmt);
 		}
 
 	}
-	
-	public void deleteBoard(String num){
+
+	public void deleteBoard(String num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = DBUtil.makeConnection();
 			String sql = "delete board where num=?";
@@ -172,12 +233,43 @@ public class BoardDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			DBUtil.close(con);
 			DBUtil.close(pstmt);
 		}
-		
-		
+
 	}
+	
+	public List<BoardVO> selectVoteCount() {
+		List<BoardVO> list = new ArrayList<BoardVO>();
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBUtil.makeConnection();
+			String sql = "select * from cattube_board order by voteCount desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery(sql);
+
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setVoteCount(rs.getInt("voteCount"));
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			System.out.println("vote select error");
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(pstmt);
+			DBUtil.close(rs);
+
+		}
+		return list;
+
+	}
+	
 
 }

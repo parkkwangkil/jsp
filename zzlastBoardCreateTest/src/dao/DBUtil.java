@@ -5,7 +5,7 @@ import java.sql.*;
 public class DBUtil {
 	private static String DRIVER_NAME="com.mysql.jdbc.Driver";
 	private static String DB_URL = 
-			"jdbc:mysql://127.0.0.1:3306/jsp";
+			"jdbc:mysql://70.12.109.95:3306/jsp";
 	private static String DB_ID = "root";
 	private static String DB_PW = "sds902";
 	
